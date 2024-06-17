@@ -1,0 +1,9 @@
+{
+	"name": "DataFactory-Battula",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c4885424-1d85-4cea-b12f-d15051a3b4b4",
+		"tenantId": "335a145e-8e40-4679-b57d-ab1354fcfce7"
+	}
+}
