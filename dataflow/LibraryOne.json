@@ -1,0 +1,14 @@
+{
+	"name": "LibraryOne",
+	"properties": {
+		"type": "UDFLibrary",
+		"typeProperties": {
+			"sources": [],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"UDFOne(string) as string = upper(trim(i1))"
+			]
+		}
+	}
+}
