@@ -1,0 +1,18 @@
+{
+	"name": "DestinationDataset_9m8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorageMovies",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "output_06_26_2024.txt",
+				"container": "output"
+			}
+		}
+	}
+}
