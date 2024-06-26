@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "DataFactory-Battula"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
 		"AzureBlobStorageMovies_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageMovies'"
@@ -16,6 +20,20 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Linked service to connect to Source storage account for accessing input folder. ",
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureBlobStorageMovies')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -52,7 +70,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Binarydataset_sink')]",
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_9m8')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -65,7 +83,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "outputmovies.txt",
+						"fileName": "output_06_26_2024.txt",
 						"container": "output"
 					}
 				}
@@ -75,7 +93,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Binarydataset_source_movies')]",
+			"name": "[concat(parameters('factoryName'), '/SourceDataset_9m8')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -88,7 +106,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "movies.txt",
+						"fileName": "moviesDB2.csv",
 						"container": "input"
 					}
 				}
@@ -98,14 +116,14 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/CopyInSameStorageAccount')]",
+			"name": "[concat(parameters('factoryName'), '/CopyPipeline_MoviesData')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "Moving data between two folders located in a single Storage Account.",
+				"description": "This pipeline is created to move data from input folder to output folder in Azure Blob Storage.",
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "Copy_9m8",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -115,7 +133,16 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
+						"userProperties": [
+							{
+								"name": "Source",
+								"value": "input//moviesDB2.csv"
+							},
+							{
+								"name": "Destination",
+								"value": "output//output_06_26_2024.txt"
+							}
+						],
 						"typeProperties": {
 							"source": {
 								"type": "BinarySource",
@@ -130,22 +157,22 @@
 							"sink": {
 								"type": "BinarySink",
 								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings",
-									"copyBehavior": "PreserveHierarchy"
+									"type": "AzureBlobStorageWriteSettings"
 								}
 							},
-							"enableStaging": false
+							"enableStaging": false,
+							"validateDataConsistency": false
 						},
 						"inputs": [
 							{
-								"referenceName": "Binarydataset_source_movies",
+								"referenceName": "SourceDataset_9m8",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "Binarydataset_sink",
+								"referenceName": "DestinationDataset_9m8",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -158,8 +185,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Binarydataset_source_movies')]",
-				"[concat(variables('factoryId'), '/datasets/Binarydataset_sink')]"
+				"[concat(variables('factoryId'), '/datasets/SourceDataset_9m8')]",
+				"[concat(variables('factoryId'), '/datasets/DestinationDataset_9m8')]"
 			]
 		}
 	]

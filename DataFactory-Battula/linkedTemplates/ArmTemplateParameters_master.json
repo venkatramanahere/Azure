@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "DataFactory-Battula"
 		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
 		"AzureBlobStorageMovies_connectionString": {
 			"value": ""
 		},
