@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "DataFactory-Battula"
 		},
+		"ADLSGen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLSGen2'"
+		},
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
@@ -15,13 +19,25 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageMovies'"
 		},
-		"ADLSGen2_accountKey": {
+		"AzureSqlDatabaseEmpLinkedService_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'ADLSGen2'"
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabaseEmpLinkedService'"
 		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcestorageaccount789.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "mysqlserver987.database.windows.net"
+		},
+		"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AzureSQLDatabaseEmp"
+		},
+		"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adminram"
 		},
 		"containerUri": {
 			"type": "string",
@@ -50,17 +66,29 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"ADLSGen2_accountKey": {
+						"value": "[parameters('ADLSGen2_accountKey')]"
+					},
 					"AzureBlobStorage1_connectionString": {
 						"value": "[parameters('AzureBlobStorage1_connectionString')]"
 					},
 					"AzureBlobStorageMovies_connectionString": {
 						"value": "[parameters('AzureBlobStorageMovies_connectionString')]"
 					},
-					"ADLSGen2_accountKey": {
-						"value": "[parameters('ADLSGen2_accountKey')]"
+					"AzureSqlDatabaseEmpLinkedService_password": {
+						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_password')]"
 					},
 					"ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
+					},
+					"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_properties_typeProperties_userName')]"
 					}
 				}
 			},
