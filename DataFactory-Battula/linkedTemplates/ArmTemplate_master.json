@@ -23,6 +23,18 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabaseEmpLinkedService'"
 		},
+		"AzureSqlDatabaseSampleDatabaseLinkedService_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabaseSampleDatabaseLinkedService'"
+		},
+		"AzureSqlDWLinkedService_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDWLinkedService'"
+		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcestorageaccount789.dfs.core.windows.net/"
@@ -38,6 +50,30 @@
 		"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "adminram"
+		},
+		"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "mysqlserver987.database.windows.net"
+		},
+		"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "mySampleDatabase"
+		},
+		"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adminram"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ramanaworkspace.sql.azuresynapse.net"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "ramanadedicatedsqlpool"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladminuser"
 		},
 		"containerUri": {
 			"type": "string",
@@ -78,6 +114,15 @@
 					"AzureSqlDatabaseEmpLinkedService_password": {
 						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_password')]"
 					},
+					"AzureSqlDatabaseSampleDatabaseLinkedService_password": {
+						"value": "[parameters('AzureSqlDatabaseSampleDatabaseLinkedService_password')]"
+					},
+					"AzureSqlDWLinkedService_password": {
+						"value": "[parameters('AzureSqlDWLinkedService_password')]"
+					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
 					"ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
 					},
@@ -89,10 +134,48 @@
 					},
 					"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_properties_typeProperties_userName')]"
+					},
+					"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_userName')]"
+					},
+					"AzureSqlDWLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_server')]"
+					},
+					"AzureSqlDWLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_database')]"
+					},
+					"AzureSqlDWLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "DataFactory-Battula_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DataFactory-Battula_ArmTemplate_0')]"
+			]
 		}
 	]
 }
