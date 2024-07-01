@@ -11,7 +11,13 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
 		"AzureBlobStorageMovies_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDWLinkedService_password": {
 			"value": ""
 		},
 		"AzureSqlDatabaseEmpLinkedService_password": {
@@ -20,14 +26,20 @@
 		"AzureSqlDatabaseSampleDatabaseLinkedService_password": {
 			"value": ""
 		},
-		"AzureSqlDWLinkedService_password": {
-			"value": ""
-		},
-		"AzureBlobStorage2_connectionString": {
+		"AzureStorageLinkedService_connectionString": {
 			"value": ""
 		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"value": "https://sourcestorageaccount789.dfs.core.windows.net/"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_server": {
+			"value": "ramanaworkspace.sql.azuresynapse.net"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_database": {
+			"value": "ramanadedicatedsqlpool"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_userName": {
+			"value": "sqladminuser"
 		},
 		"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_server": {
 			"value": "mysqlserver987.database.windows.net"
@@ -46,15 +58,6 @@
 		},
 		"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_userName": {
 			"value": "adminram"
-		},
-		"AzureSqlDWLinkedService_properties_typeProperties_server": {
-			"value": "ramanaworkspace.sql.azuresynapse.net"
-		},
-		"AzureSqlDWLinkedService_properties_typeProperties_database": {
-			"value": "ramanadedicatedsqlpool"
-		},
-		"AzureSqlDWLinkedService_properties_typeProperties_userName": {
-			"value": "sqladminuser"
 		}
 	}
 }

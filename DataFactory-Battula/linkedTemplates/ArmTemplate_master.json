@@ -15,9 +15,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
 		"AzureBlobStorageMovies_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorageMovies'"
+		},
+		"AzureSqlDWLinkedService_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDWLinkedService'"
 		},
 		"AzureSqlDatabaseEmpLinkedService_password": {
 			"type": "secureString",
@@ -27,17 +35,25 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabaseSampleDatabaseLinkedService'"
 		},
-		"AzureSqlDWLinkedService_password": {
+		"AzureStorageLinkedService_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'AzureSqlDWLinkedService'"
-		},
-		"AzureBlobStorage2_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+			"metadata": "Secure string for 'connectionString' of 'AzureStorageLinkedService'"
 		},
 		"ADLSGen2_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://sourcestorageaccount789.dfs.core.windows.net/"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ramanaworkspace.sql.azuresynapse.net"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "ramanadedicatedsqlpool"
+		},
+		"AzureSqlDWLinkedService_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladminuser"
 		},
 		"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_server": {
 			"type": "string",
@@ -62,18 +78,6 @@
 		"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "adminram"
-		},
-		"AzureSqlDWLinkedService_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "ramanaworkspace.sql.azuresynapse.net"
-		},
-		"AzureSqlDWLinkedService_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "ramanadedicatedsqlpool"
-		},
-		"AzureSqlDWLinkedService_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "sqladminuser"
 		},
 		"containerUri": {
 			"type": "string",
@@ -108,8 +112,14 @@
 					"AzureBlobStorage1_connectionString": {
 						"value": "[parameters('AzureBlobStorage1_connectionString')]"
 					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
 					"AzureBlobStorageMovies_connectionString": {
 						"value": "[parameters('AzureBlobStorageMovies_connectionString')]"
+					},
+					"AzureSqlDWLinkedService_password": {
+						"value": "[parameters('AzureSqlDWLinkedService_password')]"
 					},
 					"AzureSqlDatabaseEmpLinkedService_password": {
 						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_password')]"
@@ -117,14 +127,20 @@
 					"AzureSqlDatabaseSampleDatabaseLinkedService_password": {
 						"value": "[parameters('AzureSqlDatabaseSampleDatabaseLinkedService_password')]"
 					},
-					"AzureSqlDWLinkedService_password": {
-						"value": "[parameters('AzureSqlDWLinkedService_password')]"
-					},
-					"AzureBlobStorage2_connectionString": {
-						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					"AzureStorageLinkedService_connectionString": {
+						"value": "[parameters('AzureStorageLinkedService_connectionString')]"
 					},
 					"ADLSGen2_properties_typeProperties_url": {
 						"value": "[parameters('ADLSGen2_properties_typeProperties_url')]"
+					},
+					"AzureSqlDWLinkedService_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_server')]"
+					},
+					"AzureSqlDWLinkedService_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_database')]"
+					},
+					"AzureSqlDWLinkedService_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_userName')]"
 					},
 					"AzureSqlDatabaseEmpLinkedService_properties_typeProperties_server": {
 						"value": "[parameters('AzureSqlDatabaseEmpLinkedService_properties_typeProperties_server')]"
@@ -143,15 +159,6 @@
 					},
 					"AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabaseSampleDatabaseLinkedService_properties_typeProperties_userName')]"
-					},
-					"AzureSqlDWLinkedService_properties_typeProperties_server": {
-						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_server')]"
-					},
-					"AzureSqlDWLinkedService_properties_typeProperties_database": {
-						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_database')]"
-					},
-					"AzureSqlDWLinkedService_properties_typeProperties_userName": {
-						"value": "[parameters('AzureSqlDWLinkedService_properties_typeProperties_userName')]"
 					}
 				}
 			},
